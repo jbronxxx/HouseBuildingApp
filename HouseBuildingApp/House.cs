@@ -2,20 +2,19 @@
 
 namespace HouseBuildingApp
 {
-    abstract class House
+    class House
     {
         public int Area { get; set; }
         public int RoomsAmount { get; set; }
         public RoomType RoomType { get; set; }
 
-        private List<RoomType> _rooms { get; set; } = new List<RoomType>();
+        private List<Room> _rooms = new List<Room>();
         private List<Person> _personsAtHome = new List<Person>();
 
-        public House (int area, int roomsAmmount, RoomType room)
+        public House (int area, int roomsAmmount)
         {
             Area = area;
             RoomsAmount = roomsAmmount;
-            RoomType = room;
         }
 
         public void EnterHome(Person person)
