@@ -1,9 +1,12 @@
-﻿namespace HouseBuildingApp
+﻿using System.Collections.Generic;
+
+namespace HouseBuildingApp
 {
     class Room
     {
         private int _area { get; set; }
         public RoomType Roomtype {get; set;}
+        private List<FurnitureType> _furnitureTypes = new List<FurnitureType>();
 
         public Room(RoomType roomType, int area)
         {
@@ -11,27 +14,34 @@
             _area = area;
         }
 
-        public Furniture AddFurniture(Room room, Furniture furniture)
+        public void AddFurniture(Furniture furniture)
         {
-            if (room._area > 0 || room._area < (room._area / 2))
+            if (_area > 0 || _area < (_area / 2))
             {
-                switch (Furniture.FurnitureType)
+                switch (Roomtype)
                 {
-                    case FurnitureType.LivingRoom:
-                        room._area -= furniture.Size;
-                        return new Furniture(FurnitureType.LivingRoom, 5);
-                    case FurnitureType.Kitchen:
-                        room._area -= furniture.Size;
-                        return new Furniture(FurnitureType.Kitchen, 3);
-                    case FurnitureType.BedRoom:
-                        room._area -= furniture.Size;
-                        return new Furniture(FurnitureType.BedRoom, 2);
-                    case FurnitureType.BathRoom:
-                        room._area -= furniture.Size;
-                        return new Furniture(FurnitureType.BathRoom, 4);
+                    case RoomType.LivingRoom:
+                        _area -= furniture.Size;
+                        _furnitureTypes.Add(FurnitureType.LivingRoom);
+                        break;
+                    case RoomType.Kitchen:
+                        _area -= furniture.Size;
+                        _furnitureTypes.Add(FurnitureType.Kitchen);
+                        break;
+                    case RoomType.BedRoom:
+                        _area -= furniture.Size;
+                        _furnitureTypes.Add(FurnitureType.BedRoom);
+                        break;
+                    case RoomType.BathRoom:
+                        _area -= furniture.Size;
+                         _furnitureTypes.Add(FurnitureType.BathRoom);
+                        break;
                 }
             }
-            return null;
+            else
+            {
+                return;
+            }
         }
     }
 }
