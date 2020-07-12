@@ -4,38 +4,34 @@ namespace HouseBuildingApp
 {
     class House
     {
-        public int Area { get; set; }
-        public int RoomsAmount { get; set; }
-        public RoomType RoomType { get; set; }
+        public int Area { get; private set; }
+        public int RoomsAmount { get; private set; }
 
         private List<Room> _rooms = new List<Room>();
-        private List<RoomType> _roomTypes = new List<RoomType>();
-        private List<Person> _personsAtHome = new List<Person>();
 
-        public House (int area, int roomsAmmount)
+        public House (int area, int roomsAmmount, List<Room> rooms)
         {
             Area = area;
             RoomsAmount = roomsAmmount;
+            _rooms = rooms;
         }
 
+        // Создает комнаты по одному типу комнаты на дом
         public void CreateRoom(RoomType roomType)
         {
-            if (RoomsAmount == _rooms.Count)
-            {
-                foreach (var rm in _roomTypes)
-                    _roomTypes.Add(roomType);
-            }
+             
         }
 
-
+        // Вход в дом 
         public void EnterHome(Person person)
         {
-            _personsAtHome.Add(person);
+            
         }
 
+        // Выход из дома
         public void LeaveHome(Person person)
         {
-            _personsAtHome.Remove(person);
+            
         }
     }
 }

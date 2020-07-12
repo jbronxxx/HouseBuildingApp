@@ -4,14 +4,15 @@ namespace HouseBuildingApp
 {
     class Room
     {
-        public int Area { get; set; }
-        public RoomType Roomtype {get; set;}
+        public int Area { get; private set; }
+        public RoomType Roomtype {get; private set;}
         private List<FurnitureType> _furnitureTypes = new List<FurnitureType>();
 
-        public Room(RoomType roomType, int area)
+        public Room(RoomType roomType, List<FurnitureType> furType, int area)
         {
             Roomtype = roomType;
             Area = area;
+            _furnitureTypes = furType;
         }
 
         public void AddFurniture(Furniture furniture)
