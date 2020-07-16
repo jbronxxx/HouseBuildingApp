@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HouseBuildingApp
 {
@@ -7,25 +8,32 @@ namespace HouseBuildingApp
         public int Area { get; private set; }
         public int RoomsAmount { get; private set; }
 
-        private List<Room> _rooms = new List<Room>();
+        private List<Room> _roomsList = new List<Room>();
 
-        public House (int area, int roomsAmmount, List<Room> rooms)
+        public House (int area, int roomsAmount)
         {
             Area = area;
-            RoomsAmount = roomsAmmount;
-            _rooms = rooms;
+            RoomsAmount = roomsAmount;
         }
 
         // Создает комнаты по одному типу комнаты на дом
-        public void CreateRoom(RoomType roomType)
+        public void CreateRoom(Room newRoom)
         {
-             
+            if (_roomsList.Count < RoomsAmount)
+            {
+                _roomsList.Add(newRoom);
+                this.Area -= newRoom.Area;
+            }
+            else
+            {
+                Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount);
+            }
         }
 
         // Вход в дом 
         public void EnterHome(Person person)
         {
-            
+
         }
 
         // Выход из дома
