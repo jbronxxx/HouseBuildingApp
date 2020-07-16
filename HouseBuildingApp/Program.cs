@@ -8,6 +8,7 @@ namespace HouseBuildingApp
         {
             House house = new House(150, 4);
             house.CreateRoom(new Room(RoomType.BathRoom));
+            Console.WriteLine(house.RoomsAmount);
             Console.ReadLine();
         }
     }

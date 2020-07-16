@@ -1,14 +1,33 @@
-﻿namespace HouseBuildingApp
+﻿using System;
+
+namespace HouseBuildingApp
 {
     class Furniture
     {
         public int Size { get; set; }
         public FurnitureType FurnitureType { get; set; }
 
-        public Furniture(FurnitureType type, int size)
+        public Furniture(FurnitureType furnitureType)
         {
-            FurnitureType = type;
-            Size = size;
+            FurnitureType = furnitureType;
+
+            switch(furnitureType)
+            {
+                case FurnitureType.BathRoom:
+                    Size = 1;
+                    break;
+                case FurnitureType.BedRoom:
+                    Size = 2;
+                    break;
+                case FurnitureType.Kitchen:
+                    Size = 2;
+                    break;
+                case FurnitureType.LivingRoom:
+                    Size = 3;
+                    break;
+                default:
+                    throw new ArgumentException("Must be unknown type of furniture.");
+            }
         }
     }
 }

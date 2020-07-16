@@ -35,7 +35,15 @@ namespace HouseBuildingApp
 
         public void AddFurniture(Furniture furniture)
         {
-
+            if (this.Area > furniture.Size)
+            {
+                _furniture.Add(furniture.FurnitureType);
+                this.Area -= furniture.Size;
+            }
+            else
+            {
+                Console.WriteLine($"You don't have enough space to add furniture.");
+            }
         }
     }
 }

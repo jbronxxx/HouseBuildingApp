@@ -14,6 +14,7 @@ namespace HouseBuildingApp
         {
             Area = area;
             RoomsAmount = roomsAmount;
+           // Реализовать создание комнат автоматом по типам при создании дома 
         }
 
         // Создает комнаты по одному типу комнаты на дом
@@ -33,7 +34,10 @@ namespace HouseBuildingApp
         // Вход в дом 
         public void EnterHome(Person person)
         {
+            if(person.IsFamily)
+            {
 
+            }
         }
 
         // Выход из дома
