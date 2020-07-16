@@ -14,7 +14,14 @@ namespace HouseBuildingApp
         {
             Area = area;
             RoomsAmount = roomsAmount;
-           // Реализовать создание комнат автоматом по типам при создании дома 
+            // При создании дома, автоматически создаются нужные комнаты по умолчанию
+            if(_roomsList.Count <= RoomsAmount)
+            {
+                _roomsList.Add(new Room(RoomType.BathRoom));
+                _roomsList.Add(new Room(RoomType.BedRoom));
+                _roomsList.Add(new Room(RoomType.LivingRoom));
+                _roomsList.Add(new Room(RoomType.Kitchen));
+            }
         }
 
         // Создает комнаты по одному типу комнаты на дом

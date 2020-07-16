@@ -10,6 +10,8 @@ namespace HouseBuildingApp
 
         private List<Furniture> _furniture = new List<Furniture>();
 
+        public Room() { }
+
         public Room(RoomType roomType)
         {
             Roomtype = roomType;
@@ -37,7 +39,7 @@ namespace HouseBuildingApp
         {
             if (this.Area > furniture.Size)
             {
-                _furniture.Add(furniture.FurnitureType);
+                // Реализовать метод добавления мебели
                 this.Area -= furniture.Size;
             }
             else
