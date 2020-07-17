@@ -35,17 +35,14 @@ namespace HouseBuildingApp
             }
         }
 
-        public void AddFurniture(Furniture furniture)
+        public void AddFurniture(Furniture newFurniture)
         {
-            if (this.Area > furniture.Size)
+            if (this.Area > newFurniture.Size)
             {
-                // Реализовать метод добавления мебели
-                this.Area -= furniture.Size;
+                _furniture.Add(newFurniture);
+                this.Area -= newFurniture.Size;
             }
-            else
-            {
-                Console.WriteLine($"You don't have enough space to add furniture.");
-            }
+            else { Console.WriteLine($"You don't have enough space to add furniture."); }
         }
     }
 }

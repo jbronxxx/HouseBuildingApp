@@ -32,10 +32,7 @@ namespace HouseBuildingApp
                 _roomsList.Add(newRoom);
                 this.Area -= newRoom.Area;
             }
-            else
-            {
-                Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount);
-            }
+            else { Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount); }
         }
 
         // Вход в дом 
@@ -43,7 +40,7 @@ namespace HouseBuildingApp
         {
             if(person.IsFamily)
             {
-
+                person.EnterHouse(this);
             }
         }
 

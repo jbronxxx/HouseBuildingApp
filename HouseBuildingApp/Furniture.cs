@@ -7,10 +7,8 @@ namespace HouseBuildingApp
         public int Size { get; set; }
         public FurnitureType FurnitureType { get; set; }
 
-        public Furniture()
-        {
+        public Furniture() { }
 
-        }
         public Furniture(FurnitureType furnitureType)
         {
             FurnitureType = furnitureType;

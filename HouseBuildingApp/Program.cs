@@ -7,13 +7,9 @@ namespace HouseBuildingApp
         static void Main(string[] args)
         {
             House house = new House(150, 4);
+            Man man = new Man("Edward", true);
+            man.EnterHouse(house);
             Console.ReadLine();
         }
     }
 }
-
-
-
-
-// To do:
-// Реализовать метод распределения типов комнат при создании дома
