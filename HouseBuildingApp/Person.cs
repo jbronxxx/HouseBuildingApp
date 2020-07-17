@@ -11,6 +11,7 @@
             IsFamily = isFamily;
         }
 
-        public abstract void EnterHouse(House house);
+        internal abstract void EnterHouse(House house);
+        internal abstract void LeaveHouse(House house);
     }
 }

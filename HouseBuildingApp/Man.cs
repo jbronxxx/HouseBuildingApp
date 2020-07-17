@@ -4,10 +4,15 @@
     {
         public Man(string name, bool isFamily) : base(name, isFamily) { }
 
-        public override void EnterHouse(House house)
+        internal override void EnterHouse(House enterHome)
         {
             if (IsFamily)
-                house.EnterHome(this);
+                enterHome._manAtHome.Add(this);
+        }
+
+        internal override void LeaveHouse(House leaveHome)
+        {
+            leaveHome._manAtHome.Remove(this);
         }
     }
 }

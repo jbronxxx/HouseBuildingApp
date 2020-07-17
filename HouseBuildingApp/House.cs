@@ -9,6 +9,7 @@ namespace HouseBuildingApp
         public int RoomsAmount { get; private set; }
 
         private List<Room> _roomsList = new List<Room>();
+        internal List<Man> _manAtHome = new List<Man>();
 
         public House (int area, int roomsAmount)
         {
@@ -33,21 +34,6 @@ namespace HouseBuildingApp
                 this.Area -= newRoom.Area;
             }
             else { Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount); }
-        }
-
-        // Вход в дом 
-        public void EnterHome(Person person)
-        {
-            if(person.IsFamily)
-            {
-                person.EnterHouse(this);
-            }
-        }
-
-        // Выход из дома
-        public void LeaveHome(Person person)
-        {
-            
         }
     }
 }
