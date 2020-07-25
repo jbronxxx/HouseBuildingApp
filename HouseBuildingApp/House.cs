@@ -5,6 +5,12 @@ namespace HouseBuildingApp
 {
     class House
     {
+        public delegate void RoomCreateHandler(string message);
+        public event RoomCreateHandler Notification = NotificationMes;
+        public delegate void AreaChangeHandler(House house, Room room);
+        public event AreaChangeHandler AreaChangeEvent = new AreaChangeHandler(ChangeHouseArea);
+
+
         public int Area { get; private set; }
         public int RoomsAmount { get; private set; }
 
@@ -24,6 +30,8 @@ namespace HouseBuildingApp
                 _roomsList.Add(new Room(RoomType.LivingRoom));
                 _roomsList.Add(new Room(RoomType.Kitchen));
             }
+
+            Notification?.Invoke($"House with {_roomsList.Count} rooms has created!");
         }
 
         // Создает комнаты по одному типу комнаты на дом
@@ -34,12 +42,14 @@ namespace HouseBuildingApp
                 _roomsList.Add(newRoom);
                 this.Area -= newRoom.Area;
             }
-            else { Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount); }
+            else { Notification?.Invoke($"Rooms ammount is : {RoomsAmount}. You can't create new room."); }
         }
 
-        public int ChangeHouseArea(Room room)
+        static void ChangeHouseArea(House house, Room room)
         {
-            return Area -= room.Area;
+            house.Area -= room.Area;
+            Console.WriteLine($"House area changed to: {house.Area}");
         }
+        public static void NotificationMes(string message) => Console.WriteLine(message);
     }
 }
