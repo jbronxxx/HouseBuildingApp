@@ -5,6 +5,9 @@ namespace HouseBuildingApp
 {
     class Room
     {
+        public delegate int AreaChange(Room room);
+        public event AreaChange AreaChangeEvent;
+
         public int Area { get; private set; }
         public RoomType Roomtype {get; private set;}
 
@@ -43,6 +46,8 @@ namespace HouseBuildingApp
                 this.Area -= newFurniture.Size;
             }
             else { Console.WriteLine($"You don't have enough space to add furniture."); }
+
+            AreaChangeEvent(this);
         }
     }
 }

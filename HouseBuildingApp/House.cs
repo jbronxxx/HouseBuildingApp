@@ -11,10 +11,11 @@ namespace HouseBuildingApp
         private List<Room> _roomsList = new List<Room>();
         internal List<Man> _manAtHome = new List<Man>();
 
-        public House (int area, int roomsAmount)
+        public House (int area, int roomsAmount, Room room)
         {
             Area = area;
             RoomsAmount = roomsAmount;
+
             // При создании дома, автоматически создаются нужные комнаты по умолчанию
             if(_roomsList.Count <= RoomsAmount)
             {
@@ -34,6 +35,11 @@ namespace HouseBuildingApp
                 this.Area -= newRoom.Area;
             }
             else { Console.WriteLine($"Rooms ammount is : {0}. You can't create new room.", RoomsAmount); }
+        }
+
+        public int ChangeHouseArea(Room room)
+        {
+            return Area -= room.Area;
         }
     }
 }
