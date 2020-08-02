@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace HouseBuildingApp
 {
+    delegate void AreaChanged(int furnitureArea);
+
     class Room
     {
+        public event AreaChanged AreaChangedEvent;
         public int Area { get; private set; }
         public RoomType Roomtype {get; private set;}
 
@@ -12,6 +15,7 @@ namespace HouseBuildingApp
 
         public Room() { }
 
+        #region Room ctor
         public Room(RoomType roomType)
         {
             Roomtype = roomType;
@@ -34,6 +38,7 @@ namespace HouseBuildingApp
                     throw new ArgumentException("Must be non-residental area.");
             }
         }
+        #endregion
 
         public void AddFurniture(Furniture newFurniture)
         {
@@ -41,6 +46,10 @@ namespace HouseBuildingApp
             {
                 _furniture.Add(newFurniture);
                 this.Area -= newFurniture.Size;
+
+                // Вызываем событие обновления площади комнаты. В результате вызова сработают все подписанные методы на это событие. 
+                // То есть метод ChandedArea в классе House.
+                AreaChangedEvent?.Invoke(newFurniture.Size);
                 Console.WriteLine($"New furniture has been added.");
             }
             else { Console.WriteLine($"You don't have enough space to add furniture."); }
