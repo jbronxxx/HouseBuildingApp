@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace HouseBuildingApp
 {
+    public delegate void NotifyMessage(string message);
+
     class House
     {
-        public delegate void NotifyMessage(string message);
         NotifyMessage notify = NotificationMes;
 
         public int Area { get; private set; }

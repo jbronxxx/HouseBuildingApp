@@ -7,6 +7,8 @@ namespace HouseBuildingApp
 
     class Room
     {
+        NotifyMessage notify = NotificationMes;
+
         public event AreaChanged AreaChangedEvent;
         public int Area { get; private set; }
         public RoomType Roomtype {get; private set;}
@@ -50,9 +52,10 @@ namespace HouseBuildingApp
                 // Вызываем событие обновления площади комнаты. В результате вызова сработают все подписанные методы на это событие. 
                 // То есть метод ChandedArea в классе House.
                 AreaChangedEvent?.Invoke(newFurniture.Size);
-                Console.WriteLine($"New furniture has been added.");
+                notify($"New furniture has been added.");
             }
-            else { Console.WriteLine($"You don't have enough space to add furniture."); }
+            else { notify($"You don't have enough space to add furniture."); }
         }
+        static void NotificationMes(string message) => Console.WriteLine(message);
     }
 }
