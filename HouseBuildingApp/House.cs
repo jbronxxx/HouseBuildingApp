@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace HouseBuildingApp
 {
-    public delegate void NotifyMessage(string message);
-
     class House
     {
         NotifyMessage notify = NotificationMes;
@@ -21,7 +19,7 @@ namespace HouseBuildingApp
             Area = area;
             RoomsAmount = roomsAmount;
 
-            // При создании дома, автоматически создаются нужные комнаты по умолчанию
+            // При создании дома, создаются по умолчанию
             if (_roomsList.Count <= RoomsAmount)
             {
                 var bathRoom = new Room(RoomType.BathRoom);
@@ -50,8 +48,6 @@ namespace HouseBuildingApp
         {
             if (_roomsList.Count < RoomsAmount)
             {
-                // При каждом создании комнаты,подписываемся на её событие изменения площади комнаты. 
-                // Мы с помощью += говорим что нужно событию AreaChanged в Room вызвать метод ChangeHouseArea при срабатывании события.
                 newRoom.AreaChangedEvent += ChangeHouseArea;
                 _roomsList.Add(newRoom);
                 this.Area -= newRoom.Area;
@@ -62,7 +58,6 @@ namespace HouseBuildingApp
         //Обработчик события изменения Area в комнате.
         private void ChangeHouseArea(int furnitureArea)
         {
-            //Минусуем из площади дома размер только что добавленной мебели.
             this.Area -= furnitureArea;
             notify($"House area changed to: {this.Area}");
         }

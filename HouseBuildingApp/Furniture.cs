@@ -8,7 +8,7 @@ namespace HouseBuildingApp
         public FurnitureType FurnitureType { get; set; }
 
         public Furniture() { }
-
+        #region furniture ctor
         public Furniture(FurnitureType furnitureType)
         {
             FurnitureType = furnitureType;
@@ -31,6 +31,7 @@ namespace HouseBuildingApp
                     throw new ArgumentException("Must be unknown type of furniture.");
             }
         }
+        #endregion 
     }
 }
     

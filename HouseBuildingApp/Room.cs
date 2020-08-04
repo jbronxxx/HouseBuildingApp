@@ -42,15 +42,13 @@ namespace HouseBuildingApp
         }
         #endregion
 
+        // Adding furniture to room.
         public void AddFurniture(Furniture newFurniture)
         {
             if (this.Area > newFurniture.Size)
             {
                 _furniture.Add(newFurniture);
                 this.Area -= newFurniture.Size;
-
-                // Вызываем событие обновления площади комнаты. В результате вызова сработают все подписанные методы на это событие. 
-                // То есть метод ChandedArea в классе House.
                 AreaChangedEvent?.Invoke(newFurniture.Size);
                 notify($"New furniture has been added.");
             }
