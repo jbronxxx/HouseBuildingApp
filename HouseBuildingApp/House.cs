@@ -56,9 +56,9 @@ namespace HouseBuildingApp
         }
 
         //Обработчик события изменения Area в комнате.
-        private void ChangeHouseArea(int furnitureArea)
+        private void ChangeHouseArea(int furnitureSize)
         {
-            this.Area -= furnitureArea;
+            this.Area -= furnitureSize;
             notify($"House area changed to: {this.Area}");
         }
 

@@ -3,10 +3,10 @@
 namespace HouseBuildingApp
 {
     class Man : Person
-    { 
-        //public event EventHandler AtHome;
+    {
         NotifyMessage notify = NotificationMes;
-
+        public event EventHandler AtHome;
+        
         public Man(string name, bool isFamily) : base(name, isFamily) { }
 
         internal override void EnterHouse(House enterHome)
@@ -16,7 +16,7 @@ namespace HouseBuildingApp
                 enterHome._manAtHome.Add(this);
                 notify($"{this.Name} is home now.");
             }
-            //AtHome?.Invoke(this, null);
+            AtHome?.Invoke(this, null);
         }
 
         internal override void LeaveHouse(House leaveHome)
@@ -28,3 +28,6 @@ namespace HouseBuildingApp
         static void NotificationMes(string message) => Console.WriteLine(message);
     }
 }
+
+// TODO:
+// Метод EnterHouse переделать так что добавление в массив будет происходить в самом доме при вызове события

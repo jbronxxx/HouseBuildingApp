@@ -8,8 +8,8 @@ namespace HouseBuildingApp
     class Room
     {
         NotifyMessage notify = NotificationMes;
-
         public event AreaChanged AreaChangedEvent;
+
         public int Area { get; private set; }
         public RoomType Roomtype {get; private set;}
 
@@ -54,6 +54,7 @@ namespace HouseBuildingApp
             }
             else { notify($"You don't have enough space to add furniture."); }
         }
+
         static void NotificationMes(string message) => Console.WriteLine(message);
     }
 }
